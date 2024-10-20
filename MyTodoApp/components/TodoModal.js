@@ -32,6 +32,7 @@ export default class TodoModal extends Component {
                         {completedCount} of {taskCount} tasks
                     </Text>
 
+
                 </View>
             </SafeAreaView>
         )
