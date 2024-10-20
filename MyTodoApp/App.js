@@ -6,7 +6,6 @@ import tempData from './tempData';
 import TodoList from './components/TodoList';
 import AddListModal from './components/AddListModal';
 
-
 export default class App extends React.Component {
   state={
     addTodoVisible : false
@@ -18,9 +17,7 @@ export default class App extends React.Component {
   
   renderList=list=>{
     return <TodoList list={list}/>
-  }
-  
-  
+  }  
   
   render() {
     return (
