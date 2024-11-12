@@ -5,11 +5,23 @@ import { AntDesign } from '@expo/vector-icons';
 import tempData from './tempData';
 import TodoList from './components/TodoList';
 import AddListModal from './components/AddListModal';
+import Fire from './fire';
 
 export default class App extends React.Component {
   state={
     addTodoVisible : false,
-    lists:tempData
+    lists:tempData,
+    user:{}
+  };
+
+  componentDidMount(){
+    firebase=new Fire((error,user)=>{
+      if(error){
+        return alert("Bir Şeyler Yanlış Gitti!")
+      }
+
+      this.setState({user})
+    });
   }
 
   toggleAddTodoModal(){
@@ -43,6 +55,11 @@ export default class App extends React.Component {
           <AddListModal closeModal={()=>this.toggleAddTodoModal()} addList={this.addList}/>
           
         </Modal>
+        <View>
+          <Text>
+            User:{this.state.user.uid}
+          </Text>
+        </View>
         <View style={{ flexDirection: "row" }}>
           <View style={styles.divider} />
           <Text style={styles.title}>
